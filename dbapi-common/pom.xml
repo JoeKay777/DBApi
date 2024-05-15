@@ -24,9 +24,7 @@
     <dependencies>
         <dependency>
             <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-annotation</artifactId>
-            <version>3.2.0</version>
-            <scope>compile</scope>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -38,6 +36,24 @@
             <artifactId>fastjson</artifactId>
             <version>1.2.62</version>
             <scope>compile</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/cn.hutool/hutool-all -->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.github.freakchick</groupId>
+            <artifactId>orange</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.dbapi</groupId>
+            <artifactId>tool</artifactId>
+            <version>1.0.0</version>
         </dependency>
     </dependencies>
 

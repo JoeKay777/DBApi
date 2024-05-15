@@ -1,7 +1,6 @@
 package com.gitee.freakchicken.dbapi.apiserver;
 
-import com.dbapi.C_q4eIyk82;
-import org.mybatis.spring.annotation.MapperScan;
+//import com.dbapi.C_q4eIyk82;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,7 +13,7 @@ import javax.annotation.PostConstruct;
 
 @EnableScheduling
 @SpringBootApplication
-@MapperScan("com.gitee.freakchicken.dbapi.basic.dao")
+//@MapperScan("com.gitee.freakchicken.dbapi.basic.dao")
 @EnableCaching
 @EnableAsync
 @ComponentScan(value = { "com.gitee.freakchicken.dbapi.basic", "com.gitee.freakchicken.dbapi.apiserver" }, excludeFilters = { @ComponentScan.Filter(type = FilterType.REGEX, pattern = { // 
@@ -30,8 +29,8 @@ public class C_MwM3pGyp {
     @Value("${version}")
     String gf_n3dLvEWg;
 
-    @PostConstruct
-    public void m_97BtVcrn() {
-        C_q4eIyk82.m_Omw6HiKu(gf_n3dLvEWg);
-    }
+//    @PostConstruct
+//    public void m_97BtVcrn() {
+//        C_q4eIyk82.m_Omw6HiKu(gf_n3dLvEWg);
+//    }
 }

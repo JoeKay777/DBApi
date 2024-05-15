@@ -1,25 +1,22 @@
 package com.gitee.freakchicken.dbapi.basic.controller;
 
+import cn.hutool.core.date.DateUtil;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.dbapi.C_1muQm9UY;
 import com.gitee.freakchicken.dbapi.basic.domain.DataSource;
 import com.gitee.freakchicken.dbapi.basic.domain.JdbcDataSource;
 import com.gitee.freakchicken.dbapi.basic.service.C_ZkDf0MyS;
-import com.gitee.freakchicken.dbapi.basic.util.C_ZLBvw2qY;
 import com.gitee.freakchicken.dbapi.basic.util.C_QQPsbS0G;
+import com.gitee.freakchicken.dbapi.basic.util.C_ZLBvw2qY;
 import com.gitee.freakchicken.dbapi.basic.util.C_vudUmpvO;
 import com.gitee.freakchicken.dbapi.common.ResponseDto;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang3.time.DateFormatUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -153,8 +150,8 @@ public class C_6sRyXYzM {
         }
         lf_7TiJqHKm.stream().forEach(lambda_lf_7GlZxPvt -> {
             lambda_lf_7GlZxPvt.setCreateUserId(C_vudUmpvO.m_4zzh6Q4j());
-            lambda_lf_7GlZxPvt.setCreateTime(DateFormatUtils.format(new Date(), "yyyy-MM-dd hh:mm:ss"));
-            lambda_lf_7GlZxPvt.setUpdateTime(DateFormatUtils.format(new Date(), "yyyy-MM-dd hh:mm:ss"));
+            lambda_lf_7GlZxPvt.setCreateTime(DateUtil.format(new Date(), "yyyy-MM-dd hh:mm:ss"));
+            lambda_lf_7GlZxPvt.setUpdateTime(DateUtil.format(new Date(), "yyyy-MM-dd hh:mm:ss"));
         });
         gf_L8nJROMM.m_SlhRJ7ic(lf_7TiJqHKm);
     }

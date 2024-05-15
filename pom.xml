@@ -28,11 +28,11 @@
         <profile>
             <id>release</id>
             <modules>
-                <module>dbapi-ui</module>
-                <module>dbapi-tool</module>
+<!--                <module>dbapi-ui</module>-->
+<!--                <module>dbapi-tool</module>-->
                 <module>dbapi-common</module>
                 <module>dbapi-plugin</module>
-                <module>dbapi-service</module>
+<!--                <module>dbapi-service</module>-->
                 <module>dbapi-controller</module>
                 <module>dbapi-standalone</module>
                 <module>dbapi-cluster-apiServer</module>
@@ -157,6 +157,7 @@
                 <artifactId>dbapi-service</artifactId>
                 <version>${project.version}</version>
             </dependency>
+
             <dependency>
                 <groupId>com.gitee.freakchicken.dbapi</groupId>
                 <artifactId>dbapi-controller</artifactId>
@@ -183,6 +184,20 @@
                 <artifactId>dbapi-cluster-apiServer</artifactId>
                 <version>${project.version}</version>
             </dependency>
+
+            <!-- https://mvnrepository.com/artifact/cn.hutool/hutool-all -->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>5.8.20</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>3.2.0</version>
+            </dependency>
+
 
         </dependencies>
     </dependencyManagement>

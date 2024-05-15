@@ -33,6 +33,27 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.gitee.freakchicken.dbapi</groupId>
+            <artifactId>dbapi-common</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.gitee.freakchicken.dbapi</groupId>
+            <artifactId>dbapi-plugin</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.13.0</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.2.21</version>
+        </dependency>
 
     </dependencies>
 
@@ -81,37 +102,37 @@
 
             </plugin>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <version>3.0.0</version>
-                <executions>
-                    <execution>
-                        <id>move-dist-to-static</id>
-                        <phase>validate</phase>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                        <configuration>
-                            <!-- 删除static文件夹内容-->
-                            <target>
-                                <delete>
-                                    <fileset dir="${basedir}/src/main/resources/static/"
-                                             includes="**/*.*"/>
-                                </delete>
-                            </target>
-                            <!--   复制dist文件夹到static文件夹-->
-                            <target>
-                                <copy todir="${basedir}/src/main/resources/static">
-                                    <fileset dir="${basedir}/../dbapi-ui/dist">
-                                        <include name="**/*.*"/>
-                                    </fileset>
-                                </copy>
-                            </target>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-antrun-plugin</artifactId>-->
+<!--                <version>3.0.0</version>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <id>move-dist-to-static</id>-->
+<!--                        <phase>validate</phase>-->
+<!--                        <goals>-->
+<!--                            <goal>run</goal>-->
+<!--                        </goals>-->
+<!--                        <configuration>-->
+<!--                            &lt;!&ndash; 删除static文件夹内容&ndash;&gt;-->
+<!--                            <target>-->
+<!--                                <delete>-->
+<!--                                    <fileset dir="${basedir}/src/main/resources/static/"-->
+<!--                                             includes="**/*.*"/>-->
+<!--                                </delete>-->
+<!--                            </target>-->
+<!--                            &lt;!&ndash;   复制dist文件夹到static文件夹&ndash;&gt;-->
+<!--                            <target>-->
+<!--                                <copy todir="${basedir}/src/main/resources/static">-->
+<!--                                    <fileset dir="${basedir}/../dbapi-ui/dist">-->
+<!--                                        <include name="**/*.*"/>-->
+<!--                                    </fileset>-->
+<!--                                </copy>-->
+<!--                            </target>-->
+<!--                        </configuration>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
 
         </plugins>
     </build>

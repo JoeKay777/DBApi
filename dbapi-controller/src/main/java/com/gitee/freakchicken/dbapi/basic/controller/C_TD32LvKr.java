@@ -1,38 +1,29 @@
 package com.gitee.freakchicken.dbapi.basic.controller;
 
+import cn.hutool.core.date.DateUtil;
+import cn.hutool.core.util.StrUtil;
 import com.alibaba.druid.pool.DruidPooledConnection;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.SerializerFeature;
-import com.dbapi.C_1muQm9UY;
 import com.gitee.freakchicken.dbapi.basic.domain.DataSource;
 import com.gitee.freakchicken.dbapi.basic.domain.Group;
-import com.gitee.freakchicken.dbapi.basic.service.C_rjya7LFN;
 import com.gitee.freakchicken.dbapi.basic.service.C_ZkDf0MyS;
 import com.gitee.freakchicken.dbapi.basic.service.C_dTOaI7qN;
-import com.gitee.freakchicken.dbapi.basic.util.Constants;
-import com.gitee.freakchicken.dbapi.basic.util.C_QQPsbS0G;
-import com.gitee.freakchicken.dbapi.basic.util.C_KvmbqieE;
-import com.gitee.freakchicken.dbapi.basic.util.C_q0JUjrIY;
-import com.gitee.freakchicken.dbapi.basic.util.C_vudUmpvO;
-import com.gitee.freakchicken.dbapi.basic.util.C_sVjkvqrJ;
+import com.gitee.freakchicken.dbapi.basic.service.C_rjya7LFN;
+import com.gitee.freakchicken.dbapi.basic.util.*;
 import com.gitee.freakchicken.dbapi.common.ApiConfig;
 import com.gitee.freakchicken.dbapi.common.ApiPluginConfig;
 import com.gitee.freakchicken.dbapi.common.ResponseDto;
 import com.github.freakchick.orange.SqlMeta;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.time.DateFormatUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -41,7 +32,6 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @RestController
@@ -89,26 +79,26 @@ public class C_TD32LvKr {
         lf_GkDxQkQ5.add(jo.getJSONObject("cachePlugin"));
         lf_GkDxQkQ5.add(jo.getJSONObject("globalTransformPlugin"));
         List<ApiPluginConfig> lf_Ro6oiXlA = lf_GkDxQkQ5.toJavaList(ApiPluginConfig.class);
-        List<ApiPluginConfig> lf_f63v6kcg = lf_Ro6oiXlA.stream().filter(lambda_lf_MKCGugix -> lambda_lf_MKCGugix != null && StringUtils.isNotEmpty(lambda_lf_MKCGugix.getPluginName())).collect(Collectors.toList());
+        List<ApiPluginConfig> lf_f63v6kcg = lf_Ro6oiXlA.stream().filter(lambda_lf_MKCGugix -> lambda_lf_MKCGugix != null && StrUtil.isNotEmpty(lambda_lf_MKCGugix.getPluginName())).collect(Collectors.toList());
         lf_f63v6kcg.forEach(lambda_lf_I95W1aeo -> lambda_lf_I95W1aeo.setApiId(lf_SVInphME));
         return gf_YmnEAmmf.m_re9VPNUK(lf_jL4HP0Qx, lf_f63v6kcg);
     }
 
-    @Deprecated
-    @RequestMapping("/parseParam")
-    public ResponseDto m_DhYf3LOg(String sql) {
-        try {
-            Set<String> lf_OoRvjHR9 = C_q0JUjrIY.m_AKRRqeF3().parseParameter(sql);
-            List<JSONObject> lf_4pjlMAfI = lf_OoRvjHR9.stream().map(lambda_lf_G749WgKv -> {
-                JSONObject lf_F4H8fDVD = new JSONObject();
-                lf_F4H8fDVD.put("value", lambda_lf_G749WgKv);
-                return lf_F4H8fDVD;
-            }).collect(Collectors.toList());
-            return ResponseDto.successWithData(lf_4pjlMAfI);
-        } catch (Exception e) {
-            return ResponseDto.fail(e.getMessage());
-        }
-    }
+//    @Deprecated
+//    @RequestMapping("/parseParam")
+//    public ResponseDto m_DhYf3LOg(String sql) {
+//        try {
+//            Set<String> lf_OoRvjHR9 = C_q0JUjrIY.m_AKRRqeF3().parseParameter(sql);
+//            List<JSONObject> lf_4pjlMAfI = lf_OoRvjHR9.stream().map(lambda_lf_G749WgKv -> {
+//                JSONObject lf_F4H8fDVD = new JSONObject();
+//                lf_F4H8fDVD.put("value", lambda_lf_G749WgKv);
+//                return lf_F4H8fDVD;
+//            }).collect(Collectors.toList());
+//            return ResponseDto.successWithData(lf_4pjlMAfI);
+//        } catch (Exception e) {
+//            return ResponseDto.fail(e.getMessage());
+//        }
+//    }
 
     @RequestMapping("/getAll")
     public List<ApiConfig> m_9c4QMMJV() {
@@ -153,7 +143,7 @@ public class C_TD32LvKr {
         lf_ZzRXq19y.add(jo.getJSONObject("cachePlugin"));
         lf_ZzRXq19y.add(jo.getJSONObject("globalTransformPlugin"));
         List<ApiPluginConfig> lf_OEni41yF = lf_ZzRXq19y.toJavaList(ApiPluginConfig.class);
-        List<ApiPluginConfig> lf_4yowH9QE = lf_OEni41yF.stream().filter(lambda_lf_VlAxOYn0 -> lambda_lf_VlAxOYn0 != null && StringUtils.isNotEmpty(lambda_lf_VlAxOYn0.getPluginName())).collect(Collectors.toList());
+        List<ApiPluginConfig> lf_4yowH9QE = lf_OEni41yF.stream().filter(lambda_lf_VlAxOYn0 -> lambda_lf_VlAxOYn0 != null && StrUtil.isNotEmpty(lambda_lf_VlAxOYn0.getPluginName())).collect(Collectors.toList());
         return gf_YmnEAmmf.m_3IJcDSiO(lf_nuUGRtBi, lf_4yowH9QE);
     }
 
@@ -240,13 +230,13 @@ public class C_TD32LvKr {
         JSONObject lf_5rQjMKTL = JSON.parseObject(lf_NAfMCpmn);
         List<ApiConfig> lf_5VIi2jll = lf_5rQjMKTL.getJSONArray("api").toJavaList(ApiConfig.class);
         Integer lf_6LVZ9waG = gf_YmnEAmmf.m_oHklR2vY();
-        if ((lf_6LVZ9waG + lf_5VIi2jll.size()) > C_1muQm9UY.m_FIrnyhMh()) {
-            throw new RuntimeException("The number of API exceeds the limit");
-        }
+//        if ((lf_6LVZ9waG + lf_5VIi2jll.size()) > C_1muQm9UY.m_FIrnyhMh()) {
+//            throw new RuntimeException("The number of API exceeds the limit");
+//        }
         lf_5VIi2jll.stream().forEach(lambda_lf_knXpccRh -> {
             lambda_lf_knXpccRh.setCreateUserId(C_vudUmpvO.m_4zzh6Q4j());
-            lambda_lf_knXpccRh.setCreateTime(DateFormatUtils.format(new Date(), "yyyy-MM-dd hh:mm:ss"));
-            lambda_lf_knXpccRh.setUpdateTime(DateFormatUtils.format(new Date(), "yyyy-MM-dd hh:mm:ss"));
+            lambda_lf_knXpccRh.setCreateTime(DateUtil.format(new Date(), "yyyy-MM-dd hh:mm:ss"));
+            lambda_lf_knXpccRh.setUpdateTime(DateUtil.format(new Date(), "yyyy-MM-dd hh:mm:ss"));
         });
         List<ApiPluginConfig> lf_gWAN2caN = lf_5rQjMKTL.getJSONArray("plugins").toJavaList(ApiPluginConfig.class);
         gf_YmnEAmmf.m_b1nKkOfD(lf_5VIi2jll, lf_gWAN2caN);
@@ -257,13 +247,13 @@ public class C_TD32LvKr {
         String lf_UH8TLxMF = IOUtils.toString(file.getInputStream(), "utf-8");
         List<Group> lf_HDV3I12X = JSON.parseArray(lf_UH8TLxMF, Group.class);
         Integer lf_LXebL46w = gf_2ypKAgz1.m_TZZqmGR8();
-        if ((lf_LXebL46w + lf_HDV3I12X.size()) > C_1muQm9UY.m_ghEMlndZ()) {
-            throw new RuntimeException("The number of groups exceeds the limit");
-        }
+//        if ((lf_LXebL46w + lf_HDV3I12X.size()) > C_1muQm9UY.m_ghEMlndZ()) {
+//            throw new RuntimeException("The number of groups exceeds the limit");
+//        }
         lf_HDV3I12X.stream().forEach(lambda_lf_ON6OpEdx -> {
             lambda_lf_ON6OpEdx.setCreateUserId(C_vudUmpvO.m_4zzh6Q4j());
-            lambda_lf_ON6OpEdx.setCreateTime(DateFormatUtils.format(new Date(), "yyyy-MM-dd hh:mm:ss"));
-            lambda_lf_ON6OpEdx.setUpdateTime(DateFormatUtils.format(new Date(), "yyyy-MM-dd hh:mm:ss"));
+            lambda_lf_ON6OpEdx.setCreateTime(DateUtil.format(new Date(), "yyyy-MM-dd hh:mm:ss"));
+            lambda_lf_ON6OpEdx.setUpdateTime(DateUtil.format(new Date(), "yyyy-MM-dd hh:mm:ss"));
         });
         gf_2ypKAgz1.m_E4Xqx6XT(lf_HDV3I12X);
     }

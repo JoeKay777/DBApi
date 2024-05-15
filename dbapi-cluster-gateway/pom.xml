@@ -47,6 +47,14 @@
             <groupId>com.gitee.freakchicken.dbapi</groupId>
             <artifactId>dbapi-service</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.gitee.freakchicken.dbapi</groupId>
+            <artifactId>dbapi-common</artifactId>
+        </dependency>
 
     </dependencies>
 
