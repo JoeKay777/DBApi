@@ -1,0 +1,3 @@
+mvn install:install-file  -Dfile=./dbapi-service-4.0.10.jar  -DgroupId=com.gitee.freakchicken.dbapi  -DartifactId=dbapi-service  -Dversion=4.0.10 -Dpackaging=jar;
+mvn install:install-file  -Dfile=./tool-1.0.0.jar  -DgroupId=com.dbapi  -DartifactId=tool  -Dversion=1.0.0 -Dpackaging=jar;
+mvn install:install-file  -Dfile=./orange-1.0.jar  -DgroupId=io.github.freakchick  -DartifactId=orange  -Dversion=1.0 -Dpackaging=jar;
